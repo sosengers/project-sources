@@ -1,3 +1,30 @@
 [submodule "flight-company"]
 	path = flight-company
 	url = git@github.com:sosengers/flight-company.git
+[submodule "travel-company"]
+	path = travel-company
+	url = git@github.com:sosengers/travel-company.git
+[submodule "geographical-distances"]
+	path = geographical-distances
+	url = git@github.com:sosengers/geographical-distances.git
+[submodule "ACMESky-Backend"]
+	path = ACMESky-Backend
+	url = git@github.com:sosengers/ACMESky-Backend.git
+[submodule "ACMESky-Frontend"]
+	path = ACMESky-Frontend
+	url = git@github.com:sosengers/ACMESky-Frontend.git
+[submodule "ProntoGram-Backend"]
+	path = ProntoGram-Backend
+	url = git@github.com:sosengers/ProntoGram-Backend.git
+[submodule "ProntoGram-Frontend"]
+	path = ProntoGram-Frontend
+	url = git@github.com:sosengers/ProntoGram-Frontend.git
+[submodule "PaymentProvider-Backend"]
+	path = PaymentProvider-Backend
+	url = git@github.com:sosengers/PaymentProvider-Backend.git
+[submodule "PaymentProvider-Frontend"]
+	path = PaymentProvider-Frontend
+	url = git@github.com:sosengers/PaymentProvider-Frontend.git
+[submodule "Camunda"]
+	path = Camunda
+	url = git@github.com:sosengers/Camunda.git
