@@ -1,0 +1,3 @@
+[submodule "flight-company"]
+	path = flight-company
+	url = git@github.com:sosengers/flight-company.git
