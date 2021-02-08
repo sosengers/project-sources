@@ -1,0 +1,20 @@
+version: '3'
+services:
+  camunda:
+    build: ./Camunda/
+    container_name: camunda_acmesky
+    ports: 
+      - 8080:8080
+    networks:
+      - acmesky-network
+  acmesky_backend:
+    build: ./ACMESky-Backend/
+    container_name: acmesky_backend
+    networks:
+      - acmesky-network
+    restart: unless-stopped
+
+networks:
+  acmesky-network:
+    driver: bridge
+    
