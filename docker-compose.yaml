@@ -7,9 +7,9 @@ services:
       - 8080:8080
     networks:
       - acmesky-network
-  acmesky_backend:
-    build: ./ACMESky-Backend/
-    container_name: acmesky_backend
+  camunda_workers:
+    build: ./camunda-workers
+    container_name: camunda_workers
     networks:
       - acmesky-network
     restart: unless-stopped
