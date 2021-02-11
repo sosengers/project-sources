@@ -1,1 +1,5 @@
 .DS_Store
+
+# OpenAPI Generator CLI
+openapitools.json
+generated
