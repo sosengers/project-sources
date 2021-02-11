@@ -9,12 +9,16 @@ paths:
   /flights/buy:
     parameters: []
     post:
-      summary: buyFlight
+      summary: buyFlights
       operationId: buyFlights
       responses:
         '200':
           description: OK
-      description: Buys the flights with the given purchase details.
+        '400':
+          description: Bad Request
+      description: |-
+        Buys the flights with the given purchase details.
+        API for: ACMESky
       requestBody:
         content:
           application/json:
@@ -37,7 +41,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/Flight'
       operationId: getFlightOffers
-      description: Returns the daily flight offers of the company.
+      description: |-
+        Returns the daily flight offers of the company.
+        API for: ACMESky
 components:
   schemas:
     Flight:

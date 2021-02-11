@@ -19,13 +19,17 @@ paths:
                 type: number
                 format: double
                 minimum: 0
+        '400':
+          description: Bad Request
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Locations'
         description: ''
-      description: Calculates the distance between the given locations. The distance is returned in meters.
+      description: |-
+        Calculates the distance between the given locations. The distance is returned in meters.
+        API for: ACMESky
 components:
   schemas:
     Locations:

@@ -13,26 +13,20 @@ paths:
       responses:
         '200':
           description: OK
-      description: Sends the message to ProntoGram for being dispatched to the actual user.
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      description: |-
+        Sends the message to ProntoGram for being dispatched to the actual user.
+        API for: ACMESky
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Message'
-    get:
-      summary: getMessages
-      operationId: getMessages
-      responses:
-        '200':
-          description: OK
-      description: Returns the messages of the given user.
-      parameters:
-        - schema:
-            type: string
-            minLength: 1
-          in: query
-          name: username
-          required: true
 components:
   schemas:
     Message:
@@ -52,3 +46,12 @@ components:
         - sender
         - receiver
         - body
+    Error:
+      title: Error
+      type: object
+      properties:
+        description:
+          type: string
+          minLength: 1
+      required:
+        - description
