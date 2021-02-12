@@ -44,7 +44,7 @@ clean_all() {
 
 # Generate client source code
 generate_client() {
-    openapi-generator-cli generate \
+    openapi-generator generate \
     --input-spec openapi-interfaces/${1}.v1.yaml \
     --generator-name python \
     --config openapi-config/${1}.json \
@@ -53,7 +53,7 @@ generate_client() {
 
 # Generate server source code
 generate_server() {
-    openapi-generator-cli generate \
+    openapi-generator generate \
     --input-spec openapi-interfaces/${1}.v1.yaml \
     --generator-name python-flask \
     --config openapi-config/${1}.json \
@@ -62,7 +62,7 @@ generate_server() {
 
 # Generate documentation source code
 generate_documentation() {
-    openapi-generator-cli generate \
+    openapi-generator generate \
     --input-spec openapi-interfaces/${1}.v1.yaml \
     --generator-name markdown \
     --output generated/documentation/${1}
@@ -81,7 +81,7 @@ generate_all() {
 
 # Validates API specification
 validate_specification() {
-    openapi-generator-cli validate \
+    openapi-generator validate \
     --input-spec openapi-interfaces/${1}.v1.yaml
 }
 
