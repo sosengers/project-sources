@@ -13,7 +13,15 @@ services:
     networks:
       - acmesky-network
     restart: unless-stopped
-
+  geographical_distances:
+    build: ./geographical-distances
+    container_name: geographical_distances
+    networks:
+      - acmesky-network
+    ports:
+      - 5000:8080
+    env_file:
+      - ./geographical-distances/.env
 networks:
   acmesky-network:
     driver: bridge
