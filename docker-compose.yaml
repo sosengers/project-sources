@@ -22,6 +22,14 @@ services:
       - 5000:8080
     env_file:
       - ./geographical-distances/.env
+  travel_company_1:
+    build: ./travel-company
+    container_name: travel_company_1
+    networks:
+      - acmesky-network
+    ports:
+      - 6001:8080
+
 networks:
   acmesky-network:
     driver: bridge
