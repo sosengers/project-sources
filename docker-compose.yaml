@@ -29,6 +29,29 @@ services:
       - acmesky-network
     ports:
       - 6001:8080
+  flight_company_1:
+    build: ./flight-company
+    container_name: flight_company_1
+    networks:
+      - acmesky-network
+    ports:
+      - 7001:8080
+    env_file:
+      - ./flight-company/.env
+    environment:
+      POSTGRES_DB: flightcompany1
+      POSTGRES_HOST: flight_companies_db
+    depends_on:
+      - flight_companies_db
+  flight_companies_db: # Shared postgres instance for flight companies
+    image: postgres:13.2
+    container_name: flight_companies_db
+    env_file:
+      - ./flight-company/.env
+    volumes:
+      - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - acmesky-network
 
 networks:
   acmesky-network:
