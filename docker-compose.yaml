@@ -43,6 +43,7 @@ services:
       POSTGRES_HOST: flight_companies_db
     depends_on:
       - flight_companies_db
+    restart: unless-stopped # Necessary since the first run will fail if flight_companies_db is not ready yet
   flight_companies_db: # Shared postgres instance for flight companies
     image: postgres:13.2
     container_name: flight_companies_db
