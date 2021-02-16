@@ -22,6 +22,25 @@ services:
       - 5000:8080
     env_file:
       - ./geographical-distances/.env
+  prontogram_backend:
+    build: ./ProntoGram-Backend
+    container_name: prontogram_backend
+    networks:
+      - acmesky-network
+    depends_on:
+      - prontogram_mq
+    ports:
+      - 5001:8080
+  prontogram_mq:
+    image: rabbitmq:3.8.11
+    container_name: prontogram_mq
+    hostname: prontogram_mq
+    volumes:
+      - ./ProntoGram-Backend/rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - acmesky-network
+    ports:
+      - 5672:5672
   travel_company_1:
     build: ./travel-company
     container_name: travel_company_1
