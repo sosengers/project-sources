@@ -3,3 +3,5 @@
 # OpenAPI Generator CLI
 openapitools.json
 generated
+
+.env
