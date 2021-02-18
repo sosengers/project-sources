@@ -5,3 +5,7 @@ openapitools.json
 generated
 
 .env
+
+# Editors
+.idea/
+.vscode/
