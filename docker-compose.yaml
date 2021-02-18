@@ -94,9 +94,11 @@ services:
     build: ./PaymentProvider-Frontend
     container_name: payment_provider_frontend
     ports:
-      - 4002:80
+      - 4002:4200
     networks:
       - acmesky-network
+    volumes:
+      - ./PaymentProvider-Frontend:/app/
   payment_provider_redis:
     image: redis:6.0.10
     container_name: payment_provider_redis
