@@ -72,6 +72,18 @@ services:
       - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - acmesky-network
+  payment_provider_backend:
+    build: ./PaymentProvider-Backend
+    container_name: payment_provider_backend
+    ports:
+      - 4001:8080
+    networks:
+      - acmesky-network
+  payment_provider_redis:
+    image: redis:6.0.10
+    container_name: payment_provider_redis
+    networks:
+      - acmesky-network
 
 networks:
   acmesky-network:
