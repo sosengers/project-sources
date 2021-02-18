@@ -90,6 +90,13 @@ services:
       - 4001:8080
     networks:
       - acmesky-network
+  payment_provider_frontend:
+    build: ./PaymentProvider-Frontend
+    container_name: payment_provider_frontend
+    ports:
+      - 4002:80
+    networks:
+      - acmesky-network
   payment_provider_redis:
     image: redis:6.0.10
     container_name: payment_provider_redis
