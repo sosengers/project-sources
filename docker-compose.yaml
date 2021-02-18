@@ -41,6 +41,17 @@ services:
       - acmesky-network
     ports:
       - 5672:5672
+  prontogram_frontend:
+    build: ./ProntoGram-Frontend
+    container_name: prontogram_frontend
+    networks:
+      - acmesky-network
+    depends_on:
+      - prontogram_mq
+    ports:
+      - 8000:8080
+    env_file:
+      - ./ProntoGram-Frontend/.env
   travel_company_1:
     build: ./travel-company
     container_name: travel_company_1
