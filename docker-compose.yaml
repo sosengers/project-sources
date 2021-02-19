@@ -104,7 +104,24 @@ services:
     container_name: payment_provider_redis
     networks:
       - acmesky-network
-
+  acmesky_backend:
+    build: ./ACMESky-Backend
+    container_name: acmesky_backend
+    ports:
+      - 9000:8080
+    networks:
+      - acmesky-network
+  acmesky_mongo:
+    image: mongo:3.6.22-xenial
+    container_name: acmesky_mongo
+    networks:
+      - acmesky-network
+    environment:
+      - MONGO_INITDB_DATABASE=interests
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./ACMESky-Backend/mongo_init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
 networks:
   acmesky-network:
     driver: bridge
