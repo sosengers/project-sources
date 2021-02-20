@@ -1,10 +1,10 @@
 version: '3'
 services:
-  camunda:
+  camunda_acmesky:
     build: ./Camunda/
     container_name: camunda_acmesky
     ports: 
-      - 8080:8080
+      - 10000:8080
     networks:
       - acmesky-network
   camunda_workers:
