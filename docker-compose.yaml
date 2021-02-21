@@ -39,8 +39,6 @@ services:
       - ./ProntoGram-Backend/rabbitmq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
-    ports:
-      - 5672:5672
   prontogram_frontend:
     build: ./ProntoGram-Frontend
     container_name: prontogram_frontend
@@ -122,6 +120,15 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - ./ACMESky-Backend/mongo_init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  acmesky_mq:
+    image: rabbitmq:3.8.11
+    container_name: acmesky_mq
+    hostname: acmesky_mq
+    volumes:
+      - ./ACMESky-Backend/rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - acmesky-network
+
 networks:
   acmesky-network:
     driver: bridge
