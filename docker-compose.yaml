@@ -12,7 +12,11 @@ services:
     container_name: camunda_workers
     networks:
       - acmesky-network
+    env_file:
+      - ./camunda-workers/.env
     restart: unless-stopped
+    depends_on:
+      - acmesky_db
   geographical_distances:
     build: ./geographical-distances
     container_name: geographical_distances
@@ -120,6 +124,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - ./ACMESky-Backend/mongo_init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./ACMESky-Backend/mongo_data:/data/db
   acmesky_mq:
     image: rabbitmq:3.8.11
     container_name: acmesky_mq
@@ -128,8 +133,17 @@ services:
       - ./ACMESky-Backend/rabbitmq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
+  acmesky_db:
+    image: postgres:13.2
+    container_name: acmesky_db
+    env_file:
+      - ./camunda-workers/.env
+    volumes:
+      - ./camunda-workers/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./camunda-workers/postgres_data:/var/lib/postgresql
+    networks:
+      - acmesky-network
 
 networks:
   acmesky-network:
     driver: bridge
-    
