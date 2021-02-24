@@ -7,6 +7,8 @@ services:
       - 10000:8080
     networks:
       - acmesky-network
+    logging:
+      driver: none
   camunda_workers:
     build: ./camunda-workers
     container_name: camunda_workers
@@ -43,6 +45,8 @@ services:
       - ./ProntoGram-Backend/rabbitmq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
+    logging:
+      driver: none
   prontogram_frontend:
     build: ./ProntoGram-Frontend
     container_name: prontogram_frontend
@@ -85,6 +89,8 @@ services:
       - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - acmesky-network
+    logging:
+      driver: none
   payment_provider_backend:
     build: ./PaymentProvider-Backend
     container_name: payment_provider_backend
@@ -106,6 +112,8 @@ services:
     container_name: payment_provider_redis
     networks:
       - acmesky-network
+    logging:
+      driver: none
   acmesky_backend:
     build: ./ACMESky-Backend
     container_name: acmesky_backend
@@ -125,6 +133,8 @@ services:
     volumes:
       - ./ACMESky-Backend/mongo_init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ./ACMESky-Backend/mongo_data:/data/db
+    logging:
+      driver: none
   acmesky_mq:
     image: rabbitmq:3.8.11
     container_name: acmesky_mq
@@ -133,6 +143,8 @@ services:
       - ./ACMESky-Backend/rabbitmq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
+    logging:
+      driver: none
   acmesky_db:
     image: postgres:13.2
     container_name: acmesky_db
@@ -143,6 +155,8 @@ services:
       - ./camunda-workers/postgres_data:/var/lib/postgresql
     networks:
       - acmesky-network
+    logging:
+      driver: none
 
 networks:
   acmesky-network:
