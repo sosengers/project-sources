@@ -11,4 +11,4 @@ all:
 	docker-compose up --build
 
 clean:
-	docker-comose rm -f
+	docker-compose rm -f
