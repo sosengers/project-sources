@@ -1,5 +1,5 @@
 acmesky:
-	docker-compose up --build acmesky_backend acmesky_mongo camunda_acmesky camunda_workers acmesky_mq
+	docker-compose up --build acmesky_backend acmesky_mongo camunda_acmesky camunda_workers acmesky_mq acmesky_db
 
 prontogram:
 	docker-compose up --build prontogram_mq prontogram_frontend prontogram_backend
