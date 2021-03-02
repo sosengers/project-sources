@@ -40,7 +40,7 @@ services:
     container_name: prontogram_mq
     hostname: prontogram_mq
     volumes:
-      - ./ProntoGram-Backend/rabbitmq_data:/var/lib/rabbitmq
+      - prontogram_mq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
     logging:
@@ -85,6 +85,7 @@ services:
       - ./flight-company/.env
     volumes:
       - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - flight_companies_db_data:/var/lib/postgresql
     networks:
       - acmesky-network
     logging:
@@ -130,7 +131,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - ./ACMESky-Backend/mongo_init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./ACMESky-Backend/mongo_data:/data/db
+      - acmesky_mongo_data:/data/db
     logging:
       driver: none
   acmesky_mq:
@@ -138,7 +139,7 @@ services:
     container_name: acmesky_mq
     hostname: acmesky_mq
     volumes:
-      - ./ACMESky-Backend/rabbitmq_data:/var/lib/rabbitmq
+      - acmesky_mq_data:/var/lib/rabbitmq
     networks:
       - acmesky-network
     logging:
@@ -150,7 +151,7 @@ services:
       - ./camunda-workers/.env
     volumes:
       - ./camunda-workers/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./camunda-workers/postgres_data:/var/lib/postgresql
+      - acmesky_db_data:/var/lib/postgresql
     networks:
       - acmesky-network
     logging:
@@ -159,3 +160,15 @@ services:
 networks:
   acmesky-network:
     driver: bridge
+
+volumes:
+  acmesky_mongo_data:
+    driver: local
+  acmesky_db_data:
+    driver: local
+  prontogram_mq_data:
+    driver: local
+  flight_companies_db_data:
+    driver: local
+  acmesky_mq_data:
+    driver: local
