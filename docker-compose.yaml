@@ -85,6 +85,7 @@ services:
       - ./flight-company/.env
     volumes:
       - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./flight-company/sample_data.sql:/sample_data/sample_data.sql
       - flight_companies_db_data:/var/lib/postgresql
     networks:
       - acmesky-network
