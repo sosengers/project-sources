@@ -121,6 +121,15 @@ services:
       - 9000:8080
     networks:
       - acmesky-network
+  acmesky_frontend:
+    build: ./ACMESky-Frontend
+    container_name: acmesky_frontend
+    ports:
+      - 5002:8080
+    networks:
+      - acmesky-network
+    volumes:
+      - ./ACMESky-Frontend:/app/
   acmesky_mongo:
     image: mongo:3.6.22-xenial
     container_name: acmesky_mongo
