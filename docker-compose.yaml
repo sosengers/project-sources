@@ -125,7 +125,7 @@ services:
     build: ./ACMESky-Frontend
     container_name: acmesky_frontend
     ports:
-      - 5002:8080
+      - 5002:80
     networks:
       - acmesky-network
     volumes:
