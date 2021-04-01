@@ -102,7 +102,7 @@ services:
     build: ./PaymentProvider-Frontend
     container_name: payment_provider_frontend
     ports:
-      - 4002:4200
+      - 4002:80
     networks:
       - acmesky-network
     volumes:
