@@ -121,6 +121,17 @@ services:
       - 9000:8080
     networks:
       - acmesky-network
+  acmesky_middleware:
+    build: ./acmesky-middleware
+    container_name: acmesky_middleware
+    ports:
+      - 9001:8080
+    networks:
+      - acmesky-network
+    depends_on:
+      - acmesky_mq
+    env_file:
+      - ./acmesky-middleware/.env
   acmesky_frontend:
     build: ./ACMESky-Frontend
     container_name: acmesky_frontend
