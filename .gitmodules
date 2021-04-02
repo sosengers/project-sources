@@ -31,3 +31,6 @@
 [submodule "camunda-workers"]
 	path = camunda-workers
 	url = git@github.com:sosengers/camunda-workers.git
+[submodule "acmesky-middleware"]
+	path = acmesky-middleware
+	url = git@github.com:sosengers/acmesky-middleware.git
