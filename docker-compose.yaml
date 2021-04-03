@@ -183,6 +183,13 @@ services:
       - acmesky-network
     logging:
       driver: none
+  acmesky_redis:
+    image: redis:6.0.10
+    container_name: acmesky_redis
+    networks:
+      - acmesky-network
+    logging:
+      driver: none
 
 networks:
   acmesky-network:
