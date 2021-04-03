@@ -14,6 +14,8 @@ services:
       - acmesky-network
     env_file:
       - ./camunda-workers/.env
+    environment:
+      - PYTHONHASHSEED=1
     restart: unless-stopped
     depends_on:
       - acmesky_db
@@ -121,6 +123,8 @@ services:
       - 9000:8080
     networks:
       - acmesky-network
+    environment:
+      - PYTHONHASHSEED=1
   acmesky_middleware:
     build: ./acmesky-middleware
     container_name: acmesky_middleware
@@ -132,6 +136,8 @@ services:
       - acmesky_mq
     env_file:
       - ./acmesky-middleware/.env
+    environment:
+      - PYTHONHASHSEED=1
   acmesky_frontend:
     build: ./ACMESky-Frontend
     container_name: acmesky_frontend
