@@ -121,6 +121,8 @@ services:
       - 4001:8080
     networks:
       - acmesky-network
+    env_file:
+      - ./PaymentProvider-Backend/.env
   payment_provider_frontend:
     build: ./PaymentProvider-Frontend
     container_name: payment_provider_frontend
