@@ -10,6 +10,12 @@ paymentprovider:
 flight_companies:
 	docker-compose up --build flight_company_1 flight_companies_db
 
+geographical_distances:
+	docker-compose up --build geographical_distances
+
+travel_companies:
+	docker-compose up --build travel_company_1 travel_company_2 travel_company_3
+
 all:
 	docker-compose up --build
 

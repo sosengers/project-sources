@@ -5,6 +5,7 @@ services:
     container_name: camunda_acmesky
     ports: 
       - 10000:8080
+      - 9990:9990
     networks:
       - acmesky-network
   camunda_workers:
@@ -61,10 +62,30 @@ services:
   travel_company_1:
     build: ./travel-company
     container_name: travel_company_1
+    volumes:
+      - ./travel-company/travel_company_1.wsdl:/travelCompany/travel_company.wsdl
     networks:
       - acmesky-network
     ports:
       - 6001:8080
+  travel_company_2:
+    build: ./travel-company
+    container_name: travel_company_2
+    volumes:
+      - ./travel-company/travel_company_2.wsdl:/travelCompany/travel_company.wsdl
+    networks:
+      - acmesky-network
+    ports:
+      - 6002:8080
+  travel_company_3:
+    build: ./travel-company
+    container_name: travel_company_3
+    volumes:
+      - ./travel-company/travel_company_3.wsdl:/travelCompany/travel_company.wsdl
+    networks:
+      - acmesky-network
+    ports:
+      - 6003:8080
   flight_company_1:
     build: ./flight-company
     container_name: flight_company_1
