@@ -8,6 +8,7 @@ services:
       - 9990:9990
     networks:
       - acmesky-network
+    restart: unless-stopped
   camunda_workers:
     build: ./camunda-workers
     container_name: camunda_workers
@@ -101,6 +102,36 @@ services:
     depends_on:
       - flight_companies_db
     restart: unless-stopped # Necessary since the first run will fail if flight_companies_db is not ready yet
+  flight_company_2:
+    build: ./flight-company
+    container_name: flight_company_2
+    networks:
+      - acmesky-network
+    ports:
+      - 7002:8080
+    env_file:
+      - ./flight-company/.env
+    environment:
+      POSTGRES_DB: flightcompany2
+      POSTGRES_HOST: flight_companies_db
+    depends_on:
+      - flight_companies_db
+    restart: unless-stopped # Necessary since the first run will fail if flight_companies_db is not ready yet
+  flight_company_3:
+    build: ./flight-company
+    container_name: flight_company_3
+    networks:
+      - acmesky-network
+    ports:
+      - 7003:8080
+    env_file:
+      - ./flight-company/.env
+    environment:
+      POSTGRES_DB: flightcompany3
+      POSTGRES_HOST: flight_companies_db
+    depends_on:
+      - flight_companies_db
+    restart: unless-stopped # Necessary since the first run will fail if flight_companies_db is not ready yet
   flight_companies_db: # Shared postgres instance for flight companies
     image: postgres:13.2
     container_name: flight_companies_db
@@ -108,8 +139,8 @@ services:
       - ./flight-company/.env
     volumes:
       - ./flight-company/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./flight-company/sample_data.sql:/sample_data/sample_data.sql
       - flight_companies_db_data:/var/lib/postgresql
+      - ./flight-company/example_data/:/example_data/
     networks:
       - acmesky-network
     logging:

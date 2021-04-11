@@ -8,7 +8,7 @@ paymentprovider:
 	docker-compose up --build payment_provider_backend payment_provider_frontend payment_provider_redis
 
 flight_companies:
-	docker-compose up --build flight_company_1 flight_companies_db
+	docker-compose up --build flight_company_1 flight_company_2 flight_company_3 flight_companies_db
 
 geographical_distances:
 	docker-compose up --build geographical_distances
