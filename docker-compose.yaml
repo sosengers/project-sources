@@ -1,7 +1,7 @@
 version: '3'
 services:
   camunda_acmesky:
-    build: ./Camunda/
+    image: camunda/camunda-bpm-platform:wildfly
     container_name: camunda_acmesky
     ports: 
       - 10000:8080

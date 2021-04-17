@@ -25,9 +25,6 @@
 [submodule "PaymentProvider-Frontend"]
 	path = PaymentProvider-Frontend
 	url = git@github.com:sosengers/PaymentProvider-Frontend.git
-[submodule "Camunda"]
-	path = Camunda
-	url = git@github.com:sosengers/Camunda.git
 [submodule "camunda-workers"]
 	path = camunda-workers
 	url = git@github.com:sosengers/camunda-workers.git
