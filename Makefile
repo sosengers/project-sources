@@ -1,6 +1,6 @@
 acmesky:
 	export COMPOSE_DOCKER_CLI_BUILD=0
-	docker-compose up --build acmesky_backend acmesky_mongo camunda_acmesky camunda_workers acmesky_mq acmesky_db acmesky_middleware acmesky_redis
+	docker-compose up --build acmesky_backend acmesky_frontend acmesky_mongo camunda_acmesky camunda_workers acmesky_mq acmesky_db acmesky_middleware acmesky_redis
 
 prontogram:
 	export COMPOSE_DOCKER_CLI_BUILD=0
