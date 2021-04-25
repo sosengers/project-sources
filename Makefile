@@ -24,7 +24,7 @@ travel_companies:
 
 all:
 	export COMPOSE_DOCKER_CLI_BUILD=0
-	docker-compose up --build
+	docker-compose up
 
 clean:
 	export COMPOSE_DOCKER_CLI_BUILD=0
